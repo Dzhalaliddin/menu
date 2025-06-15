@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Меню ресторана</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .menu, .cart {
+      max-width: 700px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .category {
+      cursor: pointer;
+      background: #4caf50;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .subcategory {
+      display: none;
+      margin-top: 10px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+    button {
+      background: #4caf50;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      align-items: center;
+    }
+    .cart-item button {
+      background: #f44336;
+      margin-left: 10px;
+    }
+    .cart-item button:hover {
+      background: #d32f2f;
+    }
+    .summary {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: right;
+    }
+    .print-button, .clear-button {
+      margin-top: 20px;
+      display: inline-block;
+      background: #2196f3;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+    }
+    .print-button:hover {
+      background: #1976d2;
+    }
+    .clear-button {
+      background: #f44336;
+      margin-left: 10px;
+    }
+    .clear-button:hover {
+      background: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Электронное Меню</h1>
+
+<div class="menu">
+  <div class="category" onclick="toggleCategory('salads')">🥗 Салаты</div>
+  <div id="salads" class="subcategory">
+    <div class="item"><span>Салат из свежих овощей</span><button onclick="addToCart('Салат из свежих овощей', 2990)">Добавить — 2990 тг</button></div>
+    <div class="item"><span>Салат Костура</span><button onclick="addToCart('Салат Костура', 4990)">Добавить — 4990 тг</button></div>
+    <div class="item"><span>Салат Сандык</span><button onclick="addToCart('Салат Сандык', 4990)">Добавить — 4990 тг</button></div>
+    <div class="item"><span>Салат Хруст баклажаны</span><button onclick="addToCart('Салат Хруст баклажаны', 3990)">Добавить — 3990 тг</button></div>
+    <div class="item"><span>Салат из сезонных овощей</span><button onclick="addToCart('Салат из сезонных овощей', 4990)">Добавить — 4990 тг</button></div>
+  </div>
+
+  <div class="category" onclick="toggleCategory('main')">🍽️ Основные блюда</div>
+  <div id="main" class="subcategory">
+    <div class="item"><span>Бешбармак</span><button onclick="addToCart('Бешбармак', 7990)">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Борша ет</span><button onclick="addToCart('Борша ет', 7990)">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Бал куырдак</span><button onclick="addToCart('Бал куырдак', 6990)">Добавить — 6990 тг</button></div>
+    <div class="item"><span>Ши куырдак</span><button onclick="addToCart('Ши куырдак', 6990)">Добавить — 6990 тг</button></div>
+    <div class="item"><span>Букпа</span><button onclick="addToCart('Букпа', 7990)">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Кымыз Кабырга</span><button onclick="addToCart('Кымыз Кабырга', 7990)">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Мойын Шоу</span><button onclick="addToCart('Мойын Шоу', 25990)">Добавить — 25990 тг</button></div>
+    <div class="item"><span>Какталган казы</span><button onclick="addToCart('Какталган казы', 7990)">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Горная форель</span><button onclick="addToCart('Горная форель', 6590)">Добавить — 6590 тг</button></div>
+    <div class="item"><span>Нан салма</span><button onclick="addToCart('Нан салма', 5990)">Добавить — 5990 тг</button></div>
+  </div>
+</div>
+
+<div class="cart">
+  <h2>🧾 Ваш заказ</h2>
+  <div id="cart-items"></div>
+  <div class="summary" id="summary"></div>
+  <button class="print-button" onclick="window.print()">Распечатать заказ</button>
+  <button class="clear-button" onclick="clearCart()">Очистить заказ</button>
+</div>
+
+<script>
+  let cart = [];
+  const servicePercent = 0.15; // 15% обслуживание
+
+  function toggleCategory(id) {
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const summary = document.getElementById('summary');
+    cartItems.innerHTML = "";
+
+    if (cart.length === 0) {
+      cartItems.textContent = "Корзина пуста";
+      summary.textContent = "";
+      return;
+    }
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = "cart-item";
+
+      const itemName = document.createElement('span');
+      itemName.textContent = `${item.name} — ${item.price} тг`;
+      div.appendChild(itemName);
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Удалить';
+      delBtn.onclick = () => removeFromCart(index);
+      div.appendChild(delBtn);
+
+      cartItems.appendChild(div);
+      total += item.price;
+    });
+
+    const service = total * servicePercent;
+    const finalTotal = total + service;
+
+    summary.innerHTML = `
+      Сумма заказа: ${total.toFixed(0)} тг<br>
+      Обслуживание (15%): ${service.toFixed(0)} тг<br>
+      <strong>Итого к оплате: ${finalTotal.toFixed(0)} тг</strong>
+    `;
+  }
+</script>
+
+</body>
+</html>
