@@ -78,8 +78,6 @@
       font-size: 16px;
       border: none;
       cursor: pointer;
-      text-align: center;
-      user-select: none;
     }
     .print-button:hover {
       background: #1976d2;
@@ -91,6 +89,12 @@
     .clear-button:hover {
       background: #d32f2f;
     }
+    .time-input {
+      margin: 5px 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
   </style>
 </head>
 <body>
@@ -100,25 +104,25 @@
 <div class="menu">
   <div class="category" onclick="toggleCategory('salads')">🥗 Салаты</div>
   <div id="salads" class="subcategory">
-    <div class="item"><span>Салат из свежих овощей</span><button onclick="addToCart('Салат из свежих овощей', 2990)">Добавить — 2990 тг</button></div>
-    <div class="item"><span>Салат Костура</span><button onclick="addToCart('Салат Костура', 4990)">Добавить — 4990 тг</button></div>
-    <div class="item"><span>Салат Сандык</span><button onclick="addToCart('Салат Сандык', 4990)">Добавить — 4990 тг</button></div>
-    <div class="item"><span>Салат Хруст баклажаны</span><button onclick="addToCart('Салат Хруст баклажаны', 3990)">Добавить — 3990 тг</button></div>
-    <div class="item"><span>Салат из сезонных овощей</span><button onclick="addToCart('Салат из сезонных овощей', 4990)">Добавить — 4990 тг</button></div>
+    <div class="item"><span>Салат из свежих овощей</span><button onclick="addToCart('Салат из свежих овощей', 2990, 'Салаты')">Добавить — 2990 тг</button></div>
+    <div class="item"><span>Салат Костура</span><button onclick="addToCart('Салат Костура', 4990, 'Салаты')">Добавить — 4990 тг</button></div>
+    <div class="item"><span>Салат Сандык</span><button onclick="addToCart('Салат Сандык', 4990, 'Салаты')">Добавить — 4990 тг</button></div>
+    <div class="item"><span>Салат Хруст баклажаны</span><button onclick="addToCart('Салат Хруст баклажаны', 3990, 'Салаты')">Добавить — 3990 тг</button></div>
+    <div class="item"><span>Салат из сезонных овощей</span><button onclick="addToCart('Салат из сезонных овощей', 4990, 'Салаты')">Добавить — 4990 тг</button></div>
   </div>
 
   <div class="category" onclick="toggleCategory('main')">🍽️ Основные блюда</div>
   <div id="main" class="subcategory">
-    <div class="item"><span>Бешбармак</span><button onclick="addToCart('Бешбармак', 7990)">Добавить — 7990 тг</button></div>
-    <div class="item"><span>Борша ет</span><button onclick="addToCart('Борша ет', 7990)">Добавить — 7990 тг</button></div>
-    <div class="item"><span>Бал куырдак</span><button onclick="addToCart('Бал куырдак', 6990)">Добавить — 6990 тг</button></div>
-    <div class="item"><span>Ши куырдак</span><button onclick="addToCart('Ши куырдак', 6990)">Добавить — 6990 тг</button></div>
-    <div class="item"><span>Букпа</span><button onclick="addToCart('Букпа', 7990)">Добавить — 7990 тг</button></div>
-    <div class="item"><span>Кымыз Кабырга</span><button onclick="addToCart('Кымыз Кабырга', 7990)">Добавить — 7990 тг</button></div>
-    <div class="item"><span>Мойын Шоу</span><button onclick="addToCart('Мойын Шоу', 25990)">Добавить — 25990 тг</button></div>
-    <div class="item"><span>Какталган казы</span><button onclick="addToCart('Какталган казы', 7990)">Добавить — 7990 тг</button></div>
-    <div class="item"><span>Горная форель</span><button onclick="addToCart('Горная форель', 6590)">Добавить — 6590 тг</button></div>
-    <div class="item"><span>Нан салма</span><button onclick="addToCart('Нан салма', 5990)">Добавить — 5990 тг</button></div>
+    <div class="item"><span>Бешбармак</span><button onclick="addToCart('Бешбармак', 7990, 'Горячие блюда')">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Борша ет</span><button onclick="addToCart('Борша ет', 7990, 'Горячие блюда')">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Бал куырдак</span><button onclick="addToCart('Бал куырдак', 6990, 'Горячие блюда')">Добавить — 6990 тг</button></div>
+    <div class="item"><span>Ши куырдак</span><button onclick="addToCart('Ши куырдак', 6990, 'Горячие блюда')">Добавить — 6990 тг</button></div>
+    <div class="item"><span>Букпа</span><button onclick="addToCart('Букпа', 7990, 'Горячие блюда')">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Кымыз Кабырга</span><button onclick="addToCart('Кымыз Кабырга', 7990, 'Горячие блюда')">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Мойын Шоу</span><button onclick="addToCart('Мойын Шоу', 25990, 'Горячие блюда')">Добавить — 25990 тг</button></div>
+    <div class="item"><span>Какталган казы</span><button onclick="addToCart('Какталган казы', 7990, 'Горячие блюда')">Добавить — 7990 тг</button></div>
+    <div class="item"><span>Горная форель</span><button onclick="addToCart('Горная форель', 6590, 'Горячие блюда')">Добавить — 6590 тг</button></div>
+    <div class="item"><span>Нан салма</span><button onclick="addToCart('Нан салма', 5990, 'Горячие блюда')">Добавить — 5990 тг</button></div>
   </div>
 </div>
 
@@ -126,21 +130,22 @@
   <h2>🧾 Ваш заказ</h2>
   <div id="cart-items"></div>
   <div class="summary" id="summary"></div>
-  <button class="print-button" onclick="window.print()">Распечатать заказ</button>
+  <button class="print-button" onclick="printReceipt()">Распечатать заказ</button>
   <button class="clear-button" onclick="clearCart()">Очистить заказ</button>
 </div>
 
 <script>
   let cart = [];
-  const servicePercent = 0.15; // 15% обслуживание
+  const servicePercent = 0.15;
+  let categoryTimes = {};
 
   function toggleCategory(id) {
     const el = document.getElementById(id);
     el.style.display = el.style.display === 'block' ? 'none' : 'block';
   }
 
-  function addToCart(name, price) {
-    cart.push({ name, price });
+  function addToCart(name, price, category) {
+    cart.push({ name, price, category });
     updateCart();
   }
 
@@ -151,6 +156,7 @@
 
   function clearCart() {
     cart = [];
+    categoryTimes = {};
     updateCart();
   }
 
@@ -165,23 +171,47 @@
       return;
     }
 
-    let total = 0;
+    let grouped = {};
     cart.forEach((item, index) => {
-      const div = document.createElement('div');
-      div.className = "cart-item";
-
-      const itemName = document.createElement('span');
-      itemName.textContent = `${item.name} — ${item.price} тг`;
-      div.appendChild(itemName);
-
-      const delBtn = document.createElement('button');
-      delBtn.textContent = 'Удалить';
-      delBtn.onclick = () => removeFromCart(index);
-      div.appendChild(delBtn);
-
-      cartItems.appendChild(div);
-      total += item.price;
+      if (!grouped[item.category]) {
+        grouped[item.category] = [];
+      }
+      grouped[item.category].push({ ...item, index });
     });
+
+    let total = 0;
+
+    for (const category in grouped) {
+      const categoryTitle = document.createElement('h3');
+      categoryTitle.textContent = `🕒 Подача: ${category}`;
+
+      const timeInput = document.createElement('div');
+      timeInput.className = "time-input";
+      timeInput.innerHTML = `
+        <label>Время подачи:</label>
+        <input type="time" value="${categoryTimes[category] || ''}" onchange="categoryTimes['${category}'] = this.value" />
+      `;
+
+      cartItems.appendChild(categoryTitle);
+      cartItems.appendChild(timeInput);
+
+      grouped[category].forEach(({ name, price, index }) => {
+        const div = document.createElement('div');
+        div.className = "cart-item";
+
+        const itemName = document.createElement('span');
+        itemName.textContent = `${name} — ${price} тг`;
+        div.appendChild(itemName);
+
+        const delBtn = document.createElement('button');
+        delBtn.textContent = 'Удалить';
+        delBtn.onclick = () => removeFromCart(index);
+        div.appendChild(delBtn);
+
+        cartItems.appendChild(div);
+        total += price;
+      });
+    }
 
     const service = total * servicePercent;
     const finalTotal = total + service;
@@ -191,6 +221,29 @@
       Обслуживание (15%): ${service.toFixed(0)} тг<br>
       <strong>Итого к оплате: ${finalTotal.toFixed(0)} тг</strong>
     `;
+  }
+
+  function printReceipt() {
+    const printWindow = window.open('', '', 'width=800,height=600');
+    let html = '<html><head><title>Чек заказа</title>';
+    html += '<style>body { font-family: Arial; padding: 20px } table { width: 100%; border-collapse: collapse; margin-top: 20px } th, td { border: 1px solid #000; padding: 8px } th { background: #f2f2f2 }</style>';
+    html += '</head><body>';
+    html += '<h2 style="text-align:center">Ресторан SANDYQ — заказ</h2>';
+    html += '<table><thead><tr><th>Блюдо</th><th>Категория</th><th>Цена</th></tr></thead><tbody>';
+    cart.forEach(item => {
+      html += `<tr><td>${item.name}</td><td>${item.category}</td><td>${item.price} тг</td></tr>`;
+    });
+    html += '</tbody></table>';
+
+    html += '<p style="margin-top:20px">Сумма заказа: ' + cart.reduce((sum, i) => sum + i.price, 0) + ' тг</p>';
+    html += '<p>Обслуживание (15%): ' + (cart.reduce((sum, i) => sum + i.price, 0) * 0.15).toFixed(0) + ' тг</p>';
+    html += '<p><strong>Итого: ' + (cart.reduce((sum, i) => sum + i.price, 0) * 1.15).toFixed(0) + ' тг</strong></p>';
+    html += '<p style="margin-top:40px">Подпись официанта: __________________</p>';
+    html += '<p>Подпись гостя: __________________</p>';
+    html += '</body></html>';
+    printWindow.document.write(html);
+    printWindow.document.close();
+    printWindow.print();
   }
 </script>
 
